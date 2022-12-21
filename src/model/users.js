@@ -48,7 +48,14 @@ const findEmail = (email) => {
       )
     );
   };
+  const updateUser = (id, data) => {
+    const { fullname, phone, photo, city, address, postcode } = data;
+    return Pool.query(
+    `UPDATE users SET fullname = '${fullname}', phone = '${phone}', photo = '${photo}', city = '${city}' , address ='${address}' , postcode = '${postcode}' WHERE id = '${id}'`
+    );
+  };
 
 module.exports = {createUsers,
                 findEmail,
-                verification};
+                verification,
+                updateUser};

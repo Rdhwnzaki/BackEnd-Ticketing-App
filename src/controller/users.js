@@ -1,7 +1,8 @@
 const Modelusers = require("../model/users");
 const { createUsers,
         findEmail,
-        verification
+        verification,
+        updateUser
 } = require("../model/users")
 const { response }= require("../middlewares/common")
 const { generateToken } = require("../helper/auth");
@@ -18,7 +19,6 @@ const usersController = {
         if (users) {
             return response(res, 404, false, "email already use", "register fail");
           }
-      
           let digits = "0123456789";
           let otp = "";
           for (let i = 0; i < 6; i++) {
@@ -123,6 +123,21 @@ const usersController = {
         };
         users.token = generateToken(payload);
         response(res, 200, true, users, "login berhasil");
+      },
+      update: async (req, res, next) => {
+        try {
+          const id = req.payload.id;
+          console.log(id);
+          const {
+            photo: [photo],
+          } = req.files;
+          req.body.photo = photo.path;
+          const result = await updateUser(id, req.body);
+          return response(res, 200, true, result, "Success update user data");
+        } catch (error) {
+          console.log(error);
+          return response(res, 400, false, error, "Update user data failed");
+        }
       }
     
 }

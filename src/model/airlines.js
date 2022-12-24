@@ -33,4 +33,26 @@ const getAirlines = (search) => {
     })
 }
 
-module.exports = {createAirlines,getAirlines}
+const deletAirlines = (id) =>{
+  return new Promise((resolve, reject) => {
+    Pool.query(
+        `DELETE FROM airlines WHERE id=${id}`,
+        (err, result) => {
+            if (!err) {
+              resolve(result);
+            } else {
+              reject(err);
+            }
+          }
+    )
+})
+}
+
+const updateAirlines = (id, data) => {
+  const { name, phone, photo } = data;
+  return Pool.query(
+  `UPDATE airlines SET name = '${name}', phone = '${phone}', photo = '${photo}' WHERE id='${id}'`
+  );
+};
+
+module.exports = {createAirlines,getAirlines,deletAirlines,updateAirlines}

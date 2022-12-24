@@ -1,4 +1,5 @@
 const modeAirlines = require("../model/airlines")
+const cloudinary = require('../config/cloud')
 const { response }= require("../middlewares/common")
 const airlinesController =  {
     insert: async (req,res,next) => {
@@ -53,17 +54,32 @@ const airlinesController =  {
             const {name,phone} = req.body;
             const data = {name,phone}
             console.log(id);
-            const {
-              photo: [photo],
-            } = req.files;
-            req.body.photo = photo.path;
+            // const {
+            //   photo: [photo],
+            // } = req.files;
+            // req.body.photo = photo.path;
             const result = await modeAirlines.updateAirlines(id, data);
             return response(res, 200, true, result.command, "Success update airlines data");
           } catch (error) {
             console.log(error);
             return response(res, 400, false, error, "Update airlines data failed");
           }
-        }
+        },
+        updateLogo: async(req, res) => {
+          try {
+            const id = req.params.id;
+            console.log("id_user", id);
+            const image = await cloudinary.uploader.upload(req.file.path, {
+              folder: "ticketing",
+            });
+            req.body.photo = image.url;
+            await modeAirlines.updateLogo(id, req.body);
+            return response(res, 200, true, req.body, "Update Photo Success");
+          } catch (err) {
+            return response(res, 404, false, err, "Update Photo Fail");
+          }
+      
+        },
     }
 
 

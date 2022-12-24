@@ -51,8 +51,15 @@ const deletAirlines = (id) =>{
 const updateAirlines = (id, data) => {
   const { name, phone, photo } = data;
   return Pool.query(
-  `UPDATE airlines SET name = '${name}', phone = '${phone}', photo = '${photo}' WHERE id='${id}'`
+  `UPDATE airlines SET name = '${name}', phone = '${phone}', WHERE id='${id}'`
   );
 };
 
-module.exports = {createAirlines,getAirlines,deletAirlines,updateAirlines}
+const updateLogo = ( id, data ) => {
+  const {photo} = data;
+  return Pool.query(
+      `UPDATE users SET photo='${photo}' WHERE id='${id}'`,
+    );
+  };
+
+module.exports = {createAirlines,getAirlines,deletAirlines,updateAirlines,updateLogo}

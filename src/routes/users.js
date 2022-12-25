@@ -8,6 +8,6 @@ router.post("/register", usersController.insert);
 router.get("/verification", usersController.otp);
 router.post("/login", usersController.login);
 router.put("/update", protect, upuser, usersController.update);
-router.get("/user", protect, usersController.getUser);
+router.put("/edit-photo", protect, upuser, usersController.editPhoto);
 
 module.exports = router;

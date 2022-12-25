@@ -1,56 +1,43 @@
-const modelTicket = require("../model/ticket");
+const modelTicketStatus = require("../model/ticket_status");
 const { response } = require("../middlewares/common");
 
-const ticketController = {
-  getTicket: (req, res) => {
-    modelTicket
-      .selectTicket()
+const ticketStatusController = {
+  getTicketStatus: (req, res) => {
+    modelTicketStatus
+      .selectTicketStatus()
       .then((result) =>
         response(res, 200, true, result.rows, "Get ticket success")
       )
       .catch((err) => response(res, 404, false, err, "Get ticket failed"));
   },
-  getTicketJoin: (req, res) => {
-    modelTicket
-      .selectTicketJoin()
-      .then((result) =>
-        response(res, 200, true, result.rows, "Get ticket success")
-      )
-      .catch((err) => response(res, 404, false, err, "Get ticket failed"));
-  },
-  postTicket: async (req, res, next) => {
+  postTicketStatus: async (req, res, next) => {
     try {
-      const result = await modelTicket.insertTicket(req.body);
+      const result = await modelTicketStatus.insertTicketSTatus(req.body);
       return response(res, 200, true, result, "Insert ticket success");
     } catch (error) {
       console.log(error);
       return response(res, 400, false, error, "Insert ticket failed");
     }
   },
-  updateTicket: async (req, res, next) => {
+  putTicketStatus: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const { user_id, detail_user, total_ticket, total_price, status, uuid } =
-        req.body;
+      const { info, detail } = req.body;
       const data = {
-        user_id,
-        detail_user,
-        total_ticket,
-        total_price,
-        status,
-        uuid,
+        info,
+        detail,
       };
       console.log(id);
-      const result = await modelTicket.editTicket(id, data);
+      const result = await modelTicketStatus.editTicketStatus(id, data);
       return response(res, 200, true, result.command, "Update ticket success");
     } catch (error) {
       console.log(error);
       return response(res, 400, false, error, "Update ticket fail");
     }
   },
-  deleteTicket: (req, res, next) => {
-    modelTicket
-      .dropTicket(req.params.id)
+  deleteTicketStatus: (req, res, next) => {
+    modelTicketStatus
+      .dropTicketStatus(req.params.id)
       .then((result) =>
         response(res, 200, true, result.rows, "Delete ticket success")
       )
@@ -59,4 +46,4 @@ const ticketController = {
       );
   },
 };
-exports.ticketController = ticketController;
+exports.ticketStatusController = ticketStatusController;

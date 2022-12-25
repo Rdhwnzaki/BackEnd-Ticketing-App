@@ -2,6 +2,11 @@ const Pool = require("../config/db");
 
 const selectTicket = () => Pool.query("SELECT * FROM ticket");
 
+const selectTicketJoin = () =>
+  Pool.query(
+    "SELECT ticket.*,  ticket_status.info AS info, ticket_status.detail AS detail FROM ticket INNER JOIN ticket_status ON ticket.status = ticket_status.info;"
+  );
+
 const insertTicket = (data) => {
   const { user_id, detail_user, total_ticket, total_price, status, uuid } =
     data;
@@ -32,4 +37,5 @@ module.exports = {
   insertTicket,
   editTicket,
   dropTicket,
+  selectTicketJoin,
 };

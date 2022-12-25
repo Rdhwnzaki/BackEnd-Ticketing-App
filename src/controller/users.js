@@ -5,6 +5,7 @@ const {
   verification,
   updateUser,
   getUserByToken,
+  updatePhoto,
 } = require("../model/users");
 const { response } = require("../middlewares/common");
 const { generateToken } = require("../helper/auth");
@@ -149,6 +150,20 @@ const usersController = {
       response(res, 200, true, result.rows, "Success Get User By Token");
     } catch (error) {
       response(res, 400, false, error, "Get User By Token Fail");
+    }
+  },
+  editPhoto: async (req, res) => {
+    try {
+      const id = req.payload.id;
+      console.log("id", id);
+      const {
+        photo: [photo],
+      } = req.files;
+      req.body.photo = photo.path;
+      await Modelusers.updatePhoto(id, req.body);
+      return response(res, 200, true, req.body, "Update Photo Success");
+    } catch (err) {
+      return response(res, 404, false, err, "Update Photo Fail");
     }
   },
 };

@@ -52,10 +52,16 @@ const getUserByToken = (id) => {
   return Pool.query(`SELECT * FROM users WHERE id = '${id}'`);
 };
 
+const updatePhoto = (id, data) => {
+  const { photo } = data;
+  return Pool.query(`UPDATE users SET photo='${photo}' WHERE id='${id}'`);
+};
+
 module.exports = {
   createUsers,
   findEmail,
   verification,
   updateUser,
   getUserByToken,
+  updatePhoto,
 };

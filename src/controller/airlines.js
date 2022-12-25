@@ -52,11 +52,11 @@ const airlinesController =  {
           try {
             const id = req.params.id;
             const {name,phone} = req.body;
-            const data = {name,phone}
-            console.log(id);
-            // const {
-            //   photo: [photo],
-            // } = req.files;
+            const photo = req.files;
+            const image = await cloudinary.uploader.upload(photo.path,{folder:"ticketing"})
+            const data = {name,phone,photo:[image.secure_url]}
+            console.log(data);
+
             // req.body.photo = photo.path;
             const result = await modeAirlines.updateAirlines(id, data);
             return response(res, 200, true, result.command, "Success update airlines data");

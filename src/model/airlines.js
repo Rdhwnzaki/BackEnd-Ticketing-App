@@ -51,7 +51,7 @@ const deletAirlines = (id) =>{
 const updateAirlines = (id, data) => {
   const { name, phone, photo } = data;
   return Pool.query(
-  `UPDATE airlines SET name = '${name}', phone = '${phone}', WHERE id='${id}'`
+  `UPDATE airlines SET name = '${name}', phone = '${phone}', photo = '${photo}' WHERE id='${id}'`
   );
 };
 

@@ -6,5 +6,6 @@ router.post("/register",ticketController.insert)
 router.get("/getstockticket",ticketController.getTicket)
 router.delete("/delete/:id",ticketController.delTicket)
 router.put("/edit/:id",ticketController.editTicket)
+router.get("/pagination",ticketController.getTicketpagination)
 
 module.exports = router;

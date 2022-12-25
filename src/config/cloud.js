@@ -1,5 +1,5 @@
 const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+// const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -7,14 +7,14 @@ cloudinary.config({
   api_secret: process.env.API_SECRET,
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "ticketing",
-    resource_type: "auto",
-    allowedFormats: ["jpeg", "png", "jpg", "mp4", "mkv"],
-  },
-});
+// const storage = new CloudinaryStorage({
+//   cloudinary,
+//   params: {
+//     folder: "ticketing",
+//     resource_type: "auto",
+//     allowedFormats: ["jpeg", "png", "jpg", "mp4", "mkv"],
+//   },
+// });
 
 module.exports = cloudinary;
-module.exports = storage;
+// module.exports = storage;

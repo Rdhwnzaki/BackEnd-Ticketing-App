@@ -10,13 +10,15 @@ const ticketController = {
       )
       .catch((err) => response(res, 404, false, err, "Get ticket failed"));
   },
-  getTicketJoin: (req, res) => {
-    modelTicket
-      .selectTicketJoin()
-      .then((result) =>
-        response(res, 200, true, result.rows, "Get ticket success")
-      )
-      .catch((err) => response(res, 404, false, err, "Get ticket failed"));
+  getTicketJoin: async (req, res) => {
+    try {
+      const id = req.payload.id;
+      console.log(id);
+      const result = await modelTicket.selectTicketJoin(id);
+      response(res, 200, true, result.rows, "Success Get Ticket By Token");
+    } catch (error) {
+      response(res, 400, false, error, "Get Ticket By Token Fail");
+    }
   },
   postTicket: async (req, res, next) => {
     try {

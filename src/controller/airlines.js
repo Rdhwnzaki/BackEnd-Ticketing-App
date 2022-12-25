@@ -80,6 +80,12 @@ const airlinesController =  {
           }
       
         },
+        getAirlines: async (req,res,next) => {
+          modeAirlines.getAllairlines()
+          .then((result) => response(res, 200, true, result.rows,"get data success"))
+          .catch((err) => response(res, 404, false, err.routine,"get data fail"));
+          }
+
     }
 
 

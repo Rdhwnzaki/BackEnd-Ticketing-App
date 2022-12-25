@@ -62,4 +62,19 @@ const updateLogo = ( id, data ) => {
     );
   };
 
-module.exports = {createAirlines,getAirlines,deletAirlines,updateAirlines,updateLogo}
+const getAllairlines = () => {
+  return new Promise((resolve, reject) => {
+    Pool.query(
+        `SELECT * FROM airlines`,
+        (err, result) => {
+            if (!err) {
+              resolve(result);
+            } else {
+              reject(err);
+            }
+          }
+    )
+})
+}
+
+module.exports = {createAirlines,getAirlines,deletAirlines,updateAirlines,updateLogo,getAllairlines}

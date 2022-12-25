@@ -9,5 +9,6 @@ router.get("/verification", usersController.otp);
 router.post("/login", usersController.login);
 router.put("/update", protect, upuser, usersController.update);
 router.put("/edit-photo", protect, upuser, usersController.editPhoto);
+router.get("/user", protect, upuser, usersController.getUser);
 
 module.exports = router;

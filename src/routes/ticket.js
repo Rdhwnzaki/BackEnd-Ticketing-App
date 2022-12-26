@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-
 const { ticketController } = require("../controller/ticket");
 const protect = require("../middlewares/jwt-auth");
 

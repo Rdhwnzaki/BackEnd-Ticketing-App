@@ -10,5 +10,6 @@ router.put("/edit/:id", upuser, airlinesController.update);
 router.put("/photo/:id", upuser, airlinesController.updateLogo);
 router.get("/all-airlines", airlinesController.getAirlines);
 router.put("/update/:id", upuser, airlinesController.updateLogo);
+router.get("/get-detail-airlines/:id", airlinesController.getDetailAirlines);
 
 module.exports = router;

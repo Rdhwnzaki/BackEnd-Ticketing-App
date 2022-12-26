@@ -63,6 +63,15 @@ const getAllairlines = () => {
     });
   });
 };
+const selectAirlinesById = (id) =>
+  new Promise((resolve, reject) => {
+    Pool.query(`select * from airlines where id = '${id}' `, (err, res) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(res);
+    });
+  });
 module.exports = {
   updateLogoAirlines,
   createAirlines,
@@ -70,4 +79,5 @@ module.exports = {
   deletAirlines,
   updateAirlines,
   getAllairlines,
+  selectAirlinesById
 };

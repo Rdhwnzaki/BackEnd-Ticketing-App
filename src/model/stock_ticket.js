@@ -95,7 +95,7 @@ const putTicket = (id, data) => {
       type,
     } = data;
     Pool.query(
-      `UPDATE stock_ticket SET airlines_id='${airlines_id}', origin='${origin}', destination='${destination}', departure='${departure}', arrived='${arrived}', stock=${stock}, price=${price}, code='${code}', terminal='${terminal}', gate='${gate}',type='${type}' WHERE id=${id}`,
+      `UPDATE stock_ticket SET airlines_id=${airlines_id}, origin='${origin}', destination='${destination}', departure='${departure}', arrived='${arrived}', stock=${stock}, price=${price}, code='${code}', terminal='${terminal}', gate='${gate}',type='${type}' WHERE id=${id}`,
       (err, result) => {
         if (!err) {
           resolve(result);

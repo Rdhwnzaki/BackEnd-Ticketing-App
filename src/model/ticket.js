@@ -43,16 +43,23 @@ const createTicket = (data) => {
 // };
 
 const getTicketapagitu = (search, limit, page) => {
-  return Pool.query(
-    `SELECT stock_ticket.*, airlines.name as airlines, airlines.photo as photo
-    FROM stock_ticket
-    INNER JOIN airlines
-    ON stock_ticket.airlines_id = airlines.id
-    WHERE airlines.name
-    ILIKE '%${search}%'
-    LIMIT ${limit}
-    OFFSET ${(page - 1) * limit}`
-  );
+  return new Promise((resolve, reject) => {
+    Pool.query(
+      `SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket
+      INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id 
+      WHERE airlines.name
+      ILIKE '%${search}%'
+      LIMIT ${limit}
+      OFFSET ${(page - 1) * limit}`,
+      (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      }
+    );
+  });
 };
 
 const delTicket = (id) => {
@@ -94,32 +101,31 @@ const putTicket = (id, data) => {
   });
 };
 
-const getTicketpagination = (search, limit, page) => {
-  return new Promise((resolve, reject) => {
-    Pool.query(
-      `SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket
-      INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id 
-      WHERE airlines.name 
-      ILIKE '%${search}%' 
-      LIMIT ${limit}
-      OFFSET ${(page - 1) * limit}`,
-      (err, result) => {
-        if (!err) {
-          resolve(result);
-        } else {
-          reject(err);
-        }
-      }
-    );
-  });
-};
+// const getTicketpagination = (search, limit, page) => {
+//   return new Promise((resolve, reject) => {
+//     Pool.query(
+//       `SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket
+//       INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id
+//       WHERE airlines.name
+//       ILIKE '%${search}%'
+//       LIMIT ${limit}
+//       OFFSET ${(page - 1) * limit}`,
+//       (err, result) => {
+//         if (!err) {
+//           resolve(result);
+//         } else {
+//           reject(err);
+//         }
+//       }
+//     );
+//   });
+// };
 
 module.exports = {
   createTicket,
   getTicketapagitu,
   delTicket,
   putTicket,
-  getTicketpagination,
 };
 
 // INSERT INTO stock_ticket(origin,departure,"type",price,terminal,airlines_id,destination,arrived,stock,code,gate) VALUES('jakarta','12.00','economy',500000,'2E','1','surabaya','14.00',100,'jt-123','20');

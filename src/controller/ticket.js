@@ -40,13 +40,17 @@ const ticketController = {
     }
   },
   getTicket: async (req, res, next) => {
-    try {
-      const { rows } = await ticketModel.getTicketapagitu();
-      return response(res, 200, true, rows, "Success get ticket stock data");
-    } catch (error) {
-      console.log(error);
-      return response(res, 400, false, error, "insert ticket stock failed");
-    }
+    const search = req.query.search || "";
+    const limit = req.query.limit || 5;
+    const page = req.query.page || 1;
+    ticketModel
+      .getTicketapagitu(search, limit, page)
+      .then((result) => {
+        response(res, 200, true, result.rows, "Success get ticket stock data");
+      })
+      .catch((err) => {
+        response(res, 400, false, err, "Get ticket stock failed");
+      });
   },
   // getTicket: async (req, res, next) => {
   //   const search = req.query.search || "";
@@ -107,35 +111,35 @@ const ticketController = {
       return response(res, 400, false, error, "delete ticket stock failed");
     }
   },
-  getTicketsearch: async (req, res, next) => {
-    // try {
-    //   const page = req.query.page || 1;
-    //   const limit = req.query.limit || 2;
-    //   const search = req.query.search || "";
-    //   console.log(limit);
-    //   const { rows } = await ticketModel.getTicketpagination(
-    //     search,
-    //     page,
-    //     limit
-    //   );
-    //   return response(res, 200, true, rows, "Success get ticket stock data");
-    // } catch (error) {
-    //   console.log(error);
-    //   return response(res, 400, false, error, "get ticket stock failed");
-    // }
-    const search = req.query.search || "";
-    const limit = req.query.limit || 1;
-    const page = req.query.page || 1;
-    ticketModel
-      .getTicketapagitu(search, limit, page)
-      .then((result) => {
-        response(res, 200, true, result.rows, "Success get ticket stock data");
-      })
-      .catch((err) => {
-        response({ message: "Can't get data", err: err.message });
-      });
-    // }
-  },
+  // getTicketsearch: async (req, res, next) => {
+  //   // try {
+  //   //   const page = req.query.page || 1;
+  //   //   const limit = req.query.limit || 2;
+  //   //   const search = req.query.search || "";
+  //   //   console.log(limit);
+  //   //   const { rows } = await ticketModel.getTicketpagination(
+  //   //     search,
+  //   //     page,
+  //   //     limit
+  //   //   );
+  //   //   return response(res, 200, true, rows, "Success get ticket stock data");
+  //   // } catch (error) {
+  //   //   console.log(error);
+  //   //   return response(res, 400, false, error, "get ticket stock failed");
+  //   // }
+  //   const search = req.query.search || "";
+  //   const limit = req.query.limit || 1;
+  //   const page = req.query.page || 1;
+  //   ticketModel
+  //     .getTicketapagitu(search, limit, page)
+  //     .then((result) => {
+  //       response(res, 200, true, result.rows, "Success get ticket stock data");
+  //     })
+  //     .catch((err) => {
+  //       response({ message: "Can't get data", err: err.message });
+  //     });
+  //   // }
+  // },
 };
 
 exports.ticketController = ticketController;

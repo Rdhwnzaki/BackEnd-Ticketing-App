@@ -85,22 +85,11 @@ const putTicket = (id,data) => {
     })
 }
 
-const getTicketpagination = (search, limit, page) => {
-
-  return new Promise((resolve, reject) => {
-    const offset = (page - 1) * limit
-      Pool.query(
-          `SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id WHERE (name) ilike '%${search}%' limit ${limit}`,
-          (err, result) => {
-              if (!err) {
-                resolve(result);
-              } else {
-                reject(err);
-              }
-            }
+const getTicketpagination = (search,limit,page)=> {
+  return Pool.query(
+          `SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id WHERE airlines.name ilike '%${search}%' limit ${limit} offset ${(page-1)*limit}`,
       )
-  })
-};
+  };
 
 
 module.exports = {createTicket,

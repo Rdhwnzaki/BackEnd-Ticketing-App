@@ -46,13 +46,13 @@ editTicket : async (req,res,next) => {
       return response(res, 400, false, error, "delete ticket stock failed");
     }
     },
-    getTicketpagination : async (req,res,next) => {
+    getTicketsearch : async (req,res,next) => {
       try{
         const page = req.query.page||1;
-        const limit = req.query.limit
-        const search = req.query.search||' ';
+        const limit = req.query.limit||2;
+        const search = req.query.search||'';
         console.log(limit)
-          const {rows} = await           ticketModel.getTicketpagination(search,page,limit)
+          const {rows} = await ticketModel.getTicketpagination(search,page,limit)
           return response(res, 200, true, rows, "Success get ticket stock data");
       } catch (error) {
           console.log(error);

@@ -1,6 +1,6 @@
-const ticketModel = require("./../model/ticket");
+const ticketModel = require("../model/stock_ticket");
 const { response } = require("../middlewares/common");
-const { putTicket } = require("../model/ticket");
+const { putTicket } = require("../model/stock_ticket");
 // const { get } = require("../routes")
 
 const ticketController = {

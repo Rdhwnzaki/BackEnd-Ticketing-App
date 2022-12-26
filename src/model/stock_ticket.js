@@ -1,4 +1,4 @@
-const Pool = require("./../config/db");
+const Pool = require("../config/db");
 const createTicket = (data) => {
   const {
     airlines_id,

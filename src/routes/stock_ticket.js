@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { ticketController } = require("../controller/ticket");
+const { ticketController } = require("../controller/stock_ticket");
 const protect = require("../middlewares/jwt-auth");
 
 router.post("/register", ticketController.insert);

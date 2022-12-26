@@ -4,6 +4,7 @@ const { ticketController } = require("../controller/ticket");
 const protect = require("../middlewares/jwt-auth");
 
 router.get("/get-ticket", ticketController.getTicket);
+router.get("/get-all-ticket", ticketController.getAllTicket);
 router.get("/get-ticket-join", protect, ticketController.getTicketJoin);
 router.post("/post-ticket", ticketController.postTicket);
 router.put("/put-ticket/:id", ticketController.updateTicket);

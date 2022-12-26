@@ -62,6 +62,12 @@ const getTicketapagitu = (search, limit, page) => {
   });
 };
 
+const getById = (id) => {
+  return Pool.query(`SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket
+  INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id 
+  WHERE stock_ticket.id=${id}`)
+}
+
 const delTicket = (id) => {
   return new Promise((resolve, reject) => {
     Pool.query(`DELETE FROM stock_ticket WHERE id='${id}'`, (err, result) => {
@@ -126,6 +132,7 @@ module.exports = {
   getTicketapagitu,
   delTicket,
   putTicket,
+  getById
 };
 
 // INSERT INTO stock_ticket(origin,departure,"type",price,terminal,airlines_id,destination,arrived,stock,code,gate) VALUES('jakarta','12.00','economy',500000,'2E','1','surabaya','14.00',100,'jt-123','20');

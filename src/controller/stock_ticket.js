@@ -52,6 +52,15 @@ const stockTicketController = {
         response(res, 400, false, err, "Get ticket stock failed");
       });
   },
+  getById: async(req,res) => {
+    try {
+      const id = req.params.id
+      const {rows} = await ticketModel.getById(id)
+      response(res, 200, true, rows, "Success get ticket stock data");
+    } catch (error) {
+      console.log(error);
+    }
+  },
   // getTicket: async (req, res, next) => {
   //   const search = req.query.search || "";
   //   const limit = req.query.limit || 1;
@@ -105,10 +114,10 @@ const stockTicketController = {
         type,
       };
       const { rows } = await ticketModel.putTicket(id, data);
-      return response(res, 200, true, rows, "Success delete ticket stock data");
+      return response(res, 200, true, rows, "Success edit ticket stock data");
     } catch (error) {
       console.log(error);
-      return response(res, 400, false, error, "delete ticket stock failed");
+      return response(res, 400, false, error, "edit data ticket stock failed");
     }
   },
   // getTicketsearch: async (req, res, next) => {

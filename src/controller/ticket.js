@@ -2,6 +2,14 @@ const modelTicket = require("../model/ticket");
 const { response } = require("../middlewares/common");
 
 const ticketController = {
+  getAllTicket: async (req,res) => {
+    try {
+      const {rows} = await modelTicket.getAllTicket()
+      response(res, 200, true, rows, "Get ticket success")
+    } catch (error) {
+      console.log(error);
+    }
+  },
   getTicket: (req, res) => {
     modelTicket
       .selectTicket()
@@ -22,8 +30,8 @@ const ticketController = {
   },
   postTicket: async (req, res, next) => {
     try {
-      const result = await modelTicket.insertTicket(req.body);
-      return response(res, 200, true, result, "Insert ticket success");
+      const {rows} = await modelTicket.insertTicket(req.body);
+      return response(res, 200, true, rows, "Insert ticket success");
     } catch (error) {
       console.log(error);
       return response(res, 400, false, error, "Insert ticket failed");
@@ -41,6 +49,10 @@ const ticketController = {
         total_price,
         status,
         uuid,
+        insurance,
+        custommer_name,
+        nationality,
+        grand_total
       };
       console.log(id);
       const result = await modelTicket.editTicket(id, data);

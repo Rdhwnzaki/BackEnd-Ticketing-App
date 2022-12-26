@@ -25,9 +25,4 @@ const editTicketStatus = (id) => {
 const dropTicketStatus = (id) =>
   Pool.query(`DELETE FROM ticket_status WHERE id='${id}'`);
 
-module.exports = {
-  selectTicketStatus,
-  insertTicketSTatus,
-  editTicketStatus,
-  dropTicketStatus,
-};
+module.exports = {selectTicketStatus,insertTicketSTatus,editTicketStatus,dropTicketStatus};

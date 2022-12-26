@@ -2,10 +2,14 @@ const modelTicketStatus = require("../model/ticket_status");
 const { response } = require("../middlewares/common");
 
 const ticketStatusController = {
-  getTicketStatus: (req, res) => {
-    modelTicketStatus.selectTicketStatus()
-      .then((result) => response(res, 200, true, result.rows, "Get ticket success"))
-      .catch((err) => response(res, 404, false, err, "Get ticket failed"));
+  getTicketStatus: async (req, res) => {
+    try {
+      const result = await modelTicketStatus.selectTicketStatus(req.body);
+      return response(res, 200, true, result, "Get ticket success");
+    } catch (error) {
+      console.log(error);
+      return response(res, 400, false, error, "Get ticket failed");
+    }
   },
   insert: async (req, res, next) => {
     try {

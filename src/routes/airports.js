@@ -5,8 +5,6 @@ const {AirportsController} = require('./../controller/airports')
 
 
 
-
-
 router.get('/',AirportsController.getAirports)
 router.post('/',AirportsController.insert)
 router.put('/:id',AirportsController.update)

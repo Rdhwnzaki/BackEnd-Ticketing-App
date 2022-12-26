@@ -16,5 +16,15 @@ const airlinesController = {
       return response(res, 404, false, err, "Update Photo Fail");
     }
   },
+  getDetailAirlines: (req, res) => {
+    modelAirlines
+      .selectAirlinesById(req.params.id)
+      .then((result) =>
+        response(res, 200, true, result.rows, "Get detail airlines success")
+      )
+      .catch((err) =>
+        response(res, 404, false, err, "Get detail airlines failed")
+      );
+  },
 };
 exports.airlinesController = airlinesController;

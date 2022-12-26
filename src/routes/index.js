@@ -5,14 +5,12 @@ const TicketRouter = require("./../routes/ticket");
 const AirlinesRoute = require("./../routes/airlines");
 const TicketStatusRouter = require("./../routes/ticket_status");
 const AirportsRouter = require("./../routes/airports");
-const StockTicketRouter = require("./stock_ticket");
 
 router
   .use("/auth", UsersRouter)
   .use("/ticket", TicketRouter)
   .use("/airlines", AirlinesRoute)
   .use("/ticket-status", TicketStatusRouter)
-  .use("/airports", AirportsRouter)
-  .use("/stock_ticket", StockTicketRouter);
+  .use("/airports", AirportsRouter);
 
 module.exports = router;

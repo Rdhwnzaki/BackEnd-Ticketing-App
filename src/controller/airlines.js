@@ -5,7 +5,7 @@ const airlinesController = {
   updateLogo: async (req, res) => {
     try {
       const id = req.params.id;
-      console.log("id", id);
+      // console.log("id", id);
       const {
         photo: [photo],
       } = req.files;
@@ -50,18 +50,15 @@ const airlinesController = {
       .catch((err) => response(res, 404, false, err.routine, "get data fail"));
   },
   update: async (req, res, next) => {
-    // modeAirlines.updateAirlines(req.body,req.params.id)
-    // .then(result=> res.send({status:200,message: `berhasil mengubah data`}))
-    // .catch(err=> res.send({message:'error',err}))
     try {
       const id = req.params.id;
       const { name, phone } = req.body;
-      const photo = req.files;
-      const image = await cloudinary.uploader.upload(photo.path, {
-        folder: "ticketing",
-      });
-      const data = { name, phone, photo: [image.secure_url] };
-      console.log(data);
+      const photo = 'images'
+      // const image = await cloudinary.uploader.upload(photo.path, {
+      //   folder: "ticketing",
+      // });
+      const data = { name, phone, photo }
+      console.log(req.body);
 
       // req.body.photo = photo.path;
       const result = await modelAirlines.updateAirlines(id, data);

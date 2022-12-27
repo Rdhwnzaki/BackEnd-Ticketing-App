@@ -113,6 +113,7 @@ const stockTicketController = {
         gate,
         type,
       };
+      console.log(data);
       const { rows } = await ticketModel.putTicket(id, data);
       return response(res, 200, true, rows, "Success edit ticket stock data");
     } catch (error) {

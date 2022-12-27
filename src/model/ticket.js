@@ -8,15 +8,25 @@ const selectTicketJoin = () =>
   );
 
 const getAllTicket = () => {
-  return Pool.query(`SELECT * FROM ticket`)
-}
+  return Pool.query(`SELECT * FROM ticket`);
+};
 
 const insertTicket = (data) => {
-  const { user_id, detail_user, total_ticket, total_price, status, uuid, insurance, custommer_name, nationality, grand_total } =
-    data;
+  const {
+    user_id,
+    detail_user,
+    total_ticket,
+    total_price,
+    status,
+    uuid,
+    insurance,
+    custommer_name,
+    nationality,
+    grand_total,
+  } = data;
   return new Promise((resolve, reject) => {
     Pool.query(
-      `INSERT INTO ticket(user_id,detail_user,total_ticket,total_price,status,uuid,insurance,custommer_name,nationality,grand_total)VALUES('${user_id}','${detail_user}',1,'${total_price}',${status},'${uuid}','0','${custommer_name}','${nationality}','0')`,
+      `INSERT INTO ticket(user_id,detail_user,total_ticket,total_price,status,uuid,insurance,custommer_name,nationality,grand_total)VALUES('${user_id}','${detail_user}',1,'${total_price}',0,'${uuid}','0','${custommer_name}','${nationality}','0')`,
       (err, result) => {
         if (!err) {
           resolve(result);
@@ -28,8 +38,18 @@ const insertTicket = (data) => {
   });
 };
 const editTicket = (id, data) => {
-  const { user_id, detail_user, total_ticket, total_price, status, uuid, insurance, custommer_name, nationality, grand_total  } =
-    data;
+  const {
+    user_id,
+    detail_user,
+    total_ticket,
+    total_price,
+    status,
+    uuid,
+    insurance,
+    custommer_name,
+    nationality,
+    grand_total,
+  } = data;
   return Pool.query(
     `UPDATE ticket SET user_id = '${user_id}', detail_user = '${detail_user}', total_ticket = ${total_ticket}, total_price = '${total_price}', status = ${status}, uuid = '${uuid}', insurance = '${insurance}', custommer_name = '${custommer_name}', nationality = '${nationality}', grand_total = '${grand_total}' WHERE id='${id}'`
   );
@@ -42,5 +62,5 @@ module.exports = {
   editTicket,
   dropTicket,
   selectTicketJoin,
-  getAllTicket
+  getAllTicket,
 };

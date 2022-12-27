@@ -52,10 +52,10 @@ const stockTicketController = {
         response(res, 400, false, err, "Get ticket stock failed");
       });
   },
-  getById: async(req,res) => {
+  getById: async (req, res) => {
     try {
-      const id = req.params.id
-      const {rows} = await ticketModel.getById(id)
+      const id = req.params.id;
+      const { rows } = await ticketModel.getById(id);
       response(res, 200, true, rows, "Success get ticket stock data");
     } catch (error) {
       console.log(error);
@@ -114,6 +114,21 @@ const stockTicketController = {
         type,
       };
       const { rows } = await ticketModel.putTicket(id, data);
+      return response(res, 200, true, rows, "Success edit ticket stock data");
+    } catch (error) {
+      console.log(error);
+      return response(res, 400, false, error, "edit data ticket stock failed");
+    }
+  },
+  editTicketStock: async (req, res, next) => {
+    try {
+      const { id, stock } = req.body;
+      const data = {
+        id,
+        stock,
+      };
+      console.log(data);
+      const { rows } = await ticketModel.putTicketStock(data);
       return response(res, 200, true, rows, "Success edit ticket stock data");
     } catch (error) {
       console.log(error);

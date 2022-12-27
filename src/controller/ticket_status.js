@@ -21,7 +21,7 @@ const ticketStatusController = {
   },
   putTicketStatus: async (req, res, next) => {
     try {
-      const id = req.params.id;
+      const id = req.body;
       const { info, detail } = req.body;
       const data = {
         info,

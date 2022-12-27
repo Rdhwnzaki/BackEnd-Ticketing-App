@@ -2,10 +2,10 @@ const modelTicket = require("../model/ticket");
 const { response } = require("../middlewares/common");
 
 const ticketController = {
-  getAllTicket: async (req,res) => {
+  getAllTicket: async (req, res) => {
     try {
-      const {rows} = await modelTicket.getAllTicket()
-      response(res, 200, true, rows, "Get ticket success")
+      const { rows } = await modelTicket.getAllTicket();
+      response(res, 200, true, rows, "Get ticket success");
     } catch (error) {
       console.log(error);
     }
@@ -30,8 +30,28 @@ const ticketController = {
   },
   postTicket: async (req, res, next) => {
     try {
-      const {rows} = await modelTicket.insertTicket(req.body);
-      return response(res, 200, true, rows, "Insert ticket success");
+      const {
+        id,
+        user_id,
+        detail_user,
+        total_price,
+        uuid,
+        custommer_name,
+        nationality,
+      } = req.body;
+      const data = {
+        id,
+        user_id,
+        detail_user,
+        total_price,
+        uuid,
+        custommer_name,
+        nationality,
+      };
+      console.log(data.id);
+      const { rows } = await modelTicket.insertTicket(data);
+      console.log(data);
+      return response(res, 200, true, data, "Insert ticket success");
     } catch (error) {
       console.log(error);
       return response(res, 400, false, error, "Insert ticket failed");
@@ -40,20 +60,11 @@ const ticketController = {
   updateTicket: async (req, res, next) => {
     try {
       const id = req.params.id;
-      const { user_id, detail_user, total_ticket, total_price, status, uuid } =
-        req.body;
+      const { status } = req.body;
       const data = {
-        user_id,
-        detail_user,
-        total_ticket,
-        total_price,
         status,
-        uuid,
-        insurance,
-        custommer_name,
-        nationality,
-        grand_total
       };
+      console.log(data);
       console.log(id);
       const result = await modelTicket.editTicket(id, data);
       return response(res, 200, true, result.command, "Update ticket success");

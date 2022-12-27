@@ -65,8 +65,8 @@ const getTicketapagitu = (search, limit, page) => {
 const getById = (id) => {
   return Pool.query(`SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket
   INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id 
-  WHERE stock_ticket.id=${id}`)
-}
+  WHERE stock_ticket.id=${id}`);
+};
 
 const delTicket = (id) => {
   return new Promise((resolve, reject) => {
@@ -79,6 +79,7 @@ const delTicket = (id) => {
     });
   });
 };
+
 const putTicket = (id, data) => {
   return new Promise((resolve, reject) => {
     const {
@@ -96,6 +97,22 @@ const putTicket = (id, data) => {
     } = data;
     Pool.query(
       `UPDATE stock_ticket SET airlines_id='${airlines_id}', origin='${origin}', destination='${destination}', departure='${departure}', arrived='${arrived}', stock=${stock}, price=${price}, code='${code}', terminal='${terminal}', gate='${gate}',type='${type}' WHERE id=${id}`,
+      (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      }
+    );
+  });
+};
+
+const putTicketStock = (data) => {
+  return new Promise((resolve, reject) => {
+    const { id, stock } = data;
+    Pool.query(
+      `UPDATE stock_ticket SET stock=${stock} WHERE id=${id}`,
       (err, result) => {
         if (!err) {
           resolve(result);
@@ -132,7 +149,8 @@ module.exports = {
   getTicketapagitu,
   delTicket,
   putTicket,
-  getById
+  getById,
+  putTicketStock,
 };
 
 // INSERT INTO stock_ticket(origin,departure,"type",price,terminal,airlines_id,destination,arrived,stock,code,gate) VALUES('jakarta','12.00','economy',500000,'2E','1','surabaya','14.00',100,'jt-123','20');

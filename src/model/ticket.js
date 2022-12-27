@@ -4,7 +4,7 @@ const selectTicket = () => Pool.query("SELECT * FROM ticket");
 
 const selectTicketJoin = () =>
   Pool.query(
-    `SELECT ticket.*, ticket_status.info, ticket_status.detail, stock_ticket.origin, stock_ticket.destination FROM ticket INNER JOIN ticket_status ON ticket.status=ticket_status.info INNER JOIN stock_ticket ON ticket.stock_id=stock_ticket.id;`
+    `SELECT ticket.*, ticket_status.info, ticket_status.detail, stock_ticket.origin, stock_ticket.destination,stock_ticket.code , airlines.name FROM ticket INNER JOIN ticket_status ON ticket.status=ticket_status.info INNER JOIN stock_ticket ON ticket.stock_id=stock_ticket.id INNER JOIN airlines ON stock_ticket.airlines_id=airlines.id;`
   );
 
 const getAllTicket = () => {

@@ -6,7 +6,7 @@
 
 
 
-
+-  [x] [API Reference - Airlines](#api-reference---airlines)
 -  [x] [API Reference - Stock Ticket](#api-reference---stock-ticket)
 -  [x] [API Reference - Ticket](#api-reference---ticket)
 -  [x] [API Reference - Ticket Status](#api-reference---ticket-status)
@@ -64,6 +64,85 @@ Start the server
 ```
 
 ## Demo
+
+
+## API Referense - Airlines
+
+<details>
+<summary>Show</summary>
+<br>
+
+#### Get Airlines
+
+```
+  Get Airlines http://localhost:3006/airlines/all-airlines
+```
+
+Body
+```json
+{
+    "success": true,
+    "statusCode": 200,
+    "data": [
+        {
+            "id": 23,
+            "name": "Panjul Airlines",
+            "photo": "https://res.cloudinary.com/dsxjgmjtz/image/upload/v1672190939/ticketing/l7nr8kn8yh74fpiwa6wk.png",
+            "phone": "6132654"
+        },
+        ],
+    "message": "get data success"
+}
+```
+
+#### Post Airlines
+
+```
+  Post Airlines http://localhost:3006/airlines/all-airlines
+```
+
+Body
+```json
+{
+  "id": 23,
+  "name": "Panjul Airlines",
+  "photo": "https://res.cloudinary.com/dsxjgmjtz/image/upload/v1672190939/ticketing/l7nr8kn8yh74fpiwa6wk.png",
+  "phone": "6132654"
+}
+```
+
+#### Put Airlines
+
+```
+  Put Airlines http://localhost:3006/airlines/all-airlines/23
+```
+
+Body
+```json
+{
+  "id": 23,
+  "name": "Panjul Airlines",
+  "photo": "https://res.cloudinary.com/dsxjgmjtz/image/upload/v1672190939/ticketing/l7nr8kn8yh74fpiwa6wk.png",
+  "phone": "6132654"
+}
+```
+
+#### Delete Airlines
+
+```
+  Delete Airlines http://localhost:3006/airlines/all-airlines/23
+```
+
+Body
+```json
+{
+  "id": 23,
+  "name": "Panjul Airlines",
+  "photo": "https://res.cloudinary.com/dsxjgmjtz/image/upload/v1672190939/ticketing/l7nr8kn8yh74fpiwa6wk.png",
+  "phone": "6132654"
+}
+```
+</details>
 
 
 
@@ -150,7 +229,7 @@ Body
 #### Delete Stock Ticket
 
 ```
-  Delete Stock ticket http://localhost:3006/ticket/getstockticket/3
+  Delete Stock Ticket http://localhost:3006/ticket/getstockticket/3
 ```
 
 Body
@@ -190,7 +269,7 @@ Body
 Body
 
 ```json
-
+{
     "success": true,
     "statusCode": 200,
     "data": [

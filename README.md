@@ -66,12 +66,13 @@ Start the server
 ## Demo
 
 
+
+## API Reference - Stock Ticket
+
 <details>
 <summary>Show</summary>
 <br>
 
-
-## API Reference - Stock Ticket
 
 #### Get Stock Ticket
 
@@ -169,18 +170,16 @@ Body
       "type": "businness"
 }
 ```
-
 </details>
 
 
+
+## API Referece - Ticket
 
 
 <details>
 <summary>Show</summary>
 <br>
-
-## API Referece - Ticket
-
 
 #### Get Ticket
 
@@ -280,12 +279,11 @@ Body
 
 
 
+## API Reference - Ticket Status
+
 <details>
 <summary>Show</summary>
 <br>
-
-## API Reference - Ticket Status
-
 
 #### Get Detail Ticket Status
 
@@ -368,43 +366,24 @@ Body
 
 
 
+## API Reference - Airports
+
 <details>
 <summary>Show</summery>
 <br>
 
-## API Reference - Airports
-
-
 #### Get Detail Airports
 
 ```
-  Get All Airports http://localhost:3000/airports
+  Get All airports http://localhost:3000/airports
 ```
+
 Body
-
 ```json
 {
-    "result": [
-        {
-            "id": 1,
-            "name": "Bandar Udara Soekarno Hatta",
-            "code": "CGK"
-        }
-    ]
-}
-```
-
-#### Put Airports
-
-```
-  Put Airports http://localhost:3000/airports/1
-```
-
-body
-```json
-{
-    "name": "Bandar Udara Soekarno Hatta",
-    "code": "CGJ"
+  "id": "1",
+  "name": "Bandar Udara Soekarno Hatta",
+  "code": "CGJ"
 }
 ```
 
@@ -414,7 +393,7 @@ body
   Post Airports http://localhost:3000/airports
 ```
 
-body
+Body
 ```json
 {
   "id": "1",
@@ -423,13 +402,27 @@ body
 }
 ```
 
+#### Put Airports
+
+```
+  Put Airport http://localhost:3000/airports/1
+```
+
+Body
+```json
+{
+    "name": "Bandar Udara Soekarno Hatta",
+    "code": "CGJ"
+}
+```
+
 #### Delete Airports
 
 ```
   Delete Airports http://localhost:3000/airports/1
-``` 
+```
 
-body
+Body
 ```json
 {
   "id": "1",

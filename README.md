@@ -34,7 +34,7 @@ Install dependencies
   npm install
 ```
 
-Setup .env copy from .env.example
+Setup ENV
 
 ```bash
   DB_USER= 

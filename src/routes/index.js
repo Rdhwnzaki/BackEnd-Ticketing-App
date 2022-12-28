@@ -1,14 +1,20 @@
 const express = require('express')
 const router = express.Router()
-const AirportsRouter = require('./../routes/airports')
 const UsersRouter = require("./../routes/users");
+
+const TicketRouter = require("./../routes/ticket");
+const AirportsRouter = require('./../routes/airports')
 const AirlinesRoute = require('./../routes/airlines');
 const TicketStatusRouter = require('./../routes/ticket_status');
+const StockTicketRouter = require("./stock_ticket");
 
 router
 .use('/airports', AirportsRouter)
 .use("/auth", UsersRouter)
+.use("/ticket", TicketRouter)
 .use("/airlines", AirlinesRoute)
-.use('/ticket-status', TicketStatusRouter);
+.use('/ticket-status', TicketStatusRouter)
+.use("/stock-ticket", StockTicketRouter);
+
 
 module.exports = router

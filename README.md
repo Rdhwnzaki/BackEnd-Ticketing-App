@@ -369,7 +369,7 @@ Body
 ## API Reference - Airports
 
 <details>
-<summary>Show</summery>
+<summary>Show</summary>
 <br>
 
 #### Get Detail Airports

@@ -36,6 +36,7 @@ const ticketController = {
         detail_user,
         total_price,
         uuid,
+        stock_id,
         custommer_name,
         nationality,
       } = req.body;
@@ -45,6 +46,7 @@ const ticketController = {
         detail_user,
         total_price,
         uuid,
+        stock_id,
         custommer_name,
         nationality,
       };

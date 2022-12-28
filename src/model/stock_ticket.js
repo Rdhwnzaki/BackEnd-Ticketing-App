@@ -101,6 +101,26 @@ const putTicket = (id, data) => {
   });
 };
 
+const putTicketbooked = (id, data) => {
+  return new Promise((resolve, reject) => {
+    const {
+      stock,
+      id_ticketstatus
+    } = data;
+    Pool.query(
+      `UPDATE stock_ticket SET stock=${stock} WHERE id=${id};
+      UPDATE ticket_status SET info='1',detail='E-Ticked Issued' WHERE id=${id_ticketstatus}`,
+      (err, result) => {
+        if (!err) {
+          resolve(result);
+        } else {
+          reject(err);
+        }
+      }
+    );
+  });
+};
+
 // const getTicketpagination = (search, limit, page) => {
 //   return new Promise((resolve, reject) => {
 //     Pool.query(
@@ -126,6 +146,7 @@ module.exports = {
   getTicketapagitu,
   delTicket,
   putTicket,
+  putTicketbooked
 };
 
 // INSERT INTO stock_ticket(origin,departure,"type",price,terminal,airlines_id,destination,arrived,stock,code,gate) VALUES('jakarta','12.00','economy',500000,'2E','1','surabaya','14.00',100,'jt-123','20');

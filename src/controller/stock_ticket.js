@@ -110,7 +110,25 @@ const ticketController = {
       console.log(error);
       return response(res, 400, false, error, "delete ticket stock failed");
     }
-  },
+  },updateStockticketbooked: async (req,res,next) => {
+    try {
+      const id = req.params.id;
+      // const id_ticketstatus = req.body.id
+      const {
+        stock,
+        id_ticketstatus
+      } = req.body;
+      const data = {
+        stock,
+        id_ticketstatus
+      };
+      const { rows } = await ticketModel.putTicketbooked(id, data);
+      return response(res, 200, true, rows, "Success update stock ticket");
+    } catch (error) {
+      console.log(error);
+      return response(res, 400, false, error, "update ticket stock failed");
+    }
+  }
   // getTicketsearch: async (req, res, next) => {
   //   // try {
   //   //   const page = req.query.page || 1;

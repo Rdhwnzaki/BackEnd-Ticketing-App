@@ -9,8 +9,8 @@ const TicketStatusRouter = require('./../routes/ticket_status');
 const StockTicketRouter = require("./stock_ticket");
 
 router
-.use('/airports', AirportsRouter)
 .use("/auth", UsersRouter)
+.use('/airports', AirportsRouter)
 .use("/ticket", TicketRouter)
 .use("/airlines", AirlinesRoute)
 .use('/ticket-status', TicketStatusRouter)

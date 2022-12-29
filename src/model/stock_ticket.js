@@ -42,13 +42,18 @@ const createTicket = (data) => {
 //   });
 // };
 
-const getTicketapagitu = (search, limit, page) => {
+const getTicketapagitu = (search, limit, page,hargaAtas,hargaBawah,
+  deptimeAwal,deptimeAkhir,
+  // arvtimeAwal,arvtimeAkhir
+  ) => {
   return new Promise((resolve, reject) => {
     Pool.query(
       `SELECT stock_ticket.*, airlines.name AS airlines, airlines.photo AS photo FROM stock_ticket
       INNER JOIN airlines ON stock_ticket.airlines_id = airlines.id 
       WHERE airlines.name
       ILIKE '%${search}%'
+      AND (price BETWEEN ${hargaBawah} and ${hargaAtas})
+      AND (CAST (departure AS TIME) BETWEEN '${deptimeAwal}' and '${deptimeAkhir}')
       LIMIT ${limit}
       OFFSET ${(page - 1) * limit}`,
       (err, result) => {
@@ -150,3 +155,8 @@ module.exports = {
 };
 
 // INSERT INTO stock_ticket(origin,departure,"type",price,terminal,airlines_id,destination,arrived,stock,code,gate) VALUES('jakarta','12.00','economy',500000,'2E','1','surabaya','14.00',100,'jt-123','20');
+
+// ,arvtimeAwal,arvtimeAkhir
+// AND (CAST (arrived AS TIME) BETWEEN '${arvtimeAwal}' and '${arvtimeAkhir}')
+
+// AND (CAST (arrived AS TIME) BETWEEN '${arvtimeAwal}' and '${arvtimeAkhir}')

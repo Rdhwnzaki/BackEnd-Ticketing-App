@@ -43,9 +43,22 @@ const ticketController = {
     const search = req.query.search || "";
     const limit = req.query.limit || 5;
     const page = req.query.page || 1;
+    const hargaAtas = req.query.hargaAtas || 200000000000;
+    const hargaBawah = req.query.hargaBawah || 100;
+    // const arvtimeAwal = req.query.arvtimeAwal || "00:00";
+    // const arvtimeAkhir = req.query.arvtimeAkhir || "23:59";
+    const deptimeAwal = req.query.deptimeAwal || "00:00";
+    const deptimeAkhir = req.query.deptimeAkhir || "23:59";
+    // const arvtimeAwal = req.query.arvtimeAwal || "00:00";
+    // const arvtimeAkhir = req.query.arvtimeAkhir || "23:59";
     ticketModel
-      .getTicketapagitu(search, limit, page)
+      .getTicketapagitu(
+        search, limit, page,hargaAtas,hargaBawah,
+        // arvtimeAkhir,arvtimeAwal,
+        deptimeAwal,deptimeAkhir
+        )
       .then((result) => {
+        console.log(result.rows)
         response(res, 200, true, result.rows, "Success get ticket stock data");
       })
       .catch((err) => {
@@ -59,10 +72,11 @@ const ticketController = {
   //   ticketModel
   //     .getTicketapagitu(search, limit, page)
   //     .then((result) => {
-  //       res.status(200).send({ result: result.rows });
+  //       console.log(result.rows)
+  //       response(res, 200, true, result.rows, "Success get ticket stock data");
   //     })
   //     .catch((err) => {
-  //       res.status(404).send({ message: "Can't get data", err: err.message });
+  //       response(res, 400, false, err, "Get ticket stock failed");
   //     });
   // },
 

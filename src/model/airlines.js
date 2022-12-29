@@ -79,5 +79,5 @@ module.exports = {
   deletAirlines,
   updateAirlines,
   getAllairlines,
-  selectAirlinesById
+  selectAirlinesById,
 };

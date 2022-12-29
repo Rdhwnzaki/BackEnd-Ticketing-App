@@ -53,11 +53,11 @@ const airlinesController = {
     try {
       const id = req.params.id;
       const { name, phone } = req.body;
-      const photo = 'images'
+      const photo = "images";
       // const image = await cloudinary.uploader.upload(photo.path, {
       //   folder: "ticketing",
       // });
-      const data = { name, phone, photo }
+      const data = { name, phone, photo };
       console.log(req.body);
 
       // req.body.photo = photo.path;

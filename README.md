@@ -153,7 +153,7 @@ Body
 #### Post Airlines
 
 ```
-  Post Airlines https://gentle-tights-jay.cyclic.app/airlines/airlines
+  Post Airlines https://gentle-tights-jay.cyclic.app/airlines
 ```
 
 Body

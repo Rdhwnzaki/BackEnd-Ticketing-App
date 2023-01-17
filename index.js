@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use("/", mainRouter);
 const corsOptions = {
-  origin: "https://papaya-queijadas-21e94e.netlify.app",
+  origin: "https://caffeine-ankasa-tickecting.netlify.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };

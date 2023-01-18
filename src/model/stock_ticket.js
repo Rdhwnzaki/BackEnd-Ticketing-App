@@ -15,7 +15,7 @@ const createTicket = (data) => {
   } = data;
   return new Promise((resolve, reject) => {
     Pool.query(
-      `INSERT INTO stock_ticket(origin,departure,price,terminal,airlines_id,destination,arrived,stock,code,gate,type) VALUES('${origin}','${departure}',${price},'${terminal}','${airlines_id}','${destination}','${arrived}',${stock},'${code}','${gate}','${type}')`,
+      `INSERT INTO stock_ticket(origin,departure,price,terminal,airlines_id,destination,arrived,stock,code,gate,type) VALUES('${origin}','${departure}',${price},'${terminal}',${airlines_id},'${destination}','${arrived}',${stock},'${code}','${gate}','${type}')`,
       (err, result) => {
         if (!err) {
           resolve(result);

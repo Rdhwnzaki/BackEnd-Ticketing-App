@@ -8,23 +8,15 @@ const mainRouter = require("./src/routes/index");
 const { response } = require("./src/middlewares/common");
 const app = express();
 const port = 3006;
-const myCors = require("./src/middlewares/cors");
-// const myCors = require("./src/middlewares/cors").default;
-
-// app.use(cors());
 
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use(morgan("dev"));
 app.use("/", mainRouter);
-// const corsOptions = {
-//   origin:{
-//     "https://caffeine-ankasa-tickecting.netlify.app","http://localhost:3000"
-//   },
-//   credentials: true, //access-control-allow-credentials:true
-//   optionSuccessStatus: 200,
-// };
-app.use(cors(myCors));
+
+// app.use(cors({
+//   origin: 'http://localhost:3000'
+// }));
 
 app.all("*", (req, res, next) => {
   response(res, 404, false, null, "404 Not Found");

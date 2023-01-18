@@ -8,7 +8,7 @@ const mainRouter = require("./src/routes/index");
 const { response } = require("./src/middlewares/common");
 const app = express();
 const port = 3006;
-const myCors = require("../be-ticketing-app/src/middlewares/cors");
+const myCors = require("./src/middlewares/cors");
 
 // app.use(cors());
 

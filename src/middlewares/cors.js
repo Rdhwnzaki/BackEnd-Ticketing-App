@@ -2,7 +2,7 @@ const myCors = (req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
     "https://caffeine-ankasa-tickecting.netlify.app",
-    "http://localhost:3000"
+    "https://ticketing-adm.netlify.app"
   );
   // http://domain-website-kamu.com
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");

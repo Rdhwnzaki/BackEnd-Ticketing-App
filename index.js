@@ -9,6 +9,7 @@ const { response } = require("./src/middlewares/common");
 const app = express();
 const port = 3006;
 const myCors = require("./src/middlewares/cors");
+// const myCors = require("./src/middlewares/cors").default;
 
 // app.use(cors());
 

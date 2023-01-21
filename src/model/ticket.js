@@ -22,13 +22,13 @@ const insertTicket = (data) => {
     uuid,
     stock_id,
     insurance,
-    custommer_name,
+    customer_name,
     nationality,
     grand_total,
   } = data;
   return new Promise((resolve, reject) => {
     Pool.query(
-      `INSERT INTO ticket(id, user_id,detail_user,total_ticket,total_price,status,uuid,stock_id,insurance,custommer_name,nationality,grand_total)VALUES(${id},'${user_id}','${detail_user}',1,'${total_price}','0','${uuid}',${stock_id},'0','${custommer_name}','${nationality}','0')`,
+      `INSERT INTO ticket(id, user_id,detail_user,total_ticket,total_price,status,uuid,stock_id,insurance,customer_name,nationality,grand_total)VALUES(${id},'${user_id}','${detail_user}',1,'${total_price}','0','${uuid}',${stock_id},'0','${customer_name}','${nationality}','0')`,
       (err, result) => {
         if (!err) {
           resolve(result);

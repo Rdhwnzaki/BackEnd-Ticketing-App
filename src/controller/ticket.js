@@ -37,7 +37,7 @@ const ticketController = {
         total_price,
         uuid,
         stock_id,
-        custommer_name,
+        customer_name,
         nationality,
       } = req.body;
       const data = {
@@ -47,7 +47,7 @@ const ticketController = {
         total_price,
         uuid,
         stock_id,
-        custommer_name,
+        customer_name,
         nationality,
       };
       console.log(data.id);

@@ -71,7 +71,7 @@ Start the server
 #### Post Login
 
 ```
-  Post Login https://gentle-tights-jay.cyclic.app/auth/login
+  Post Login /auth/login
 ```
 
 Body
@@ -86,7 +86,7 @@ Body
 #### Post Verification
 
 ```
-  Post Verification https://gentle-tights-jay.cyclic.app/auth/verification
+  Post Verification /auth/verification
 ```
 
 Body
@@ -101,7 +101,7 @@ Body
 #### Post Register
 
 ```
-  Post Register https://gentle-tights-jay.cyclic.app/auth/register
+  Post Register /auth/register
 ```
 
 ```json
@@ -115,7 +115,7 @@ Body
 #### Get Detail User
 
 ```
-  Get Detail User https://gentle-tights-jay.cyclic.app/auth/user
+  Get Detail User /auth/user
 ```
 
 Body
@@ -147,7 +147,7 @@ Body
 #### Put User
 
 ```
-  Put User https://gentle-tights-jay.cyclic.app/auth/update
+  Put User /auth/update
 ```
 
 Body
@@ -166,7 +166,7 @@ Body
 #### Put Photo
 
 ```
-  Put Photo https://gentle-tights-jay.cyclic.app/auth/edit-photo
+  Put Photo /auth/edit-photo
 ```
 
 Body
@@ -188,7 +188,7 @@ Body
 #### Get All Airlines
 
 ```
-  Get All Airlines https://gentle-tights-jay.cyclic.app/airlines/all-airlines
+  Get All Airlines /airlines/all-airlines
 ```
 
 Body
@@ -266,7 +266,7 @@ Body
 #### Get Detail Airlines
 
 ```
-  Get Detail Airlines https://gentle-tights-jay.cyclic.app/airlines/get-detail-airlines/13
+  Get Detail Airlines /airlines/get-detail-airlines/13
 ```
 
 Body
@@ -290,7 +290,7 @@ Body
 #### Get Airlines By Search Name
 
 ```
-  Get Airlines By Search Name https://gentle-tights-jay.cyclic.app/airlines/search/Fly Emirates
+  Get Airlines By Search Name /airlines/search/Fly Emirates
 ```
 
 ```json
@@ -312,7 +312,7 @@ Body
 #### Post Airlines
 
 ```
-  Post Airlines https://gentle-tights-jay.cyclic.app/airlines/register
+  Post Airlines /airlines/register
 ```
 
 Body
@@ -328,7 +328,7 @@ Body
 #### Put Airlines
 
 ```
-  Put Airlines https://gentle-tights-jay.cyclic.app/airlines/edit/23
+  Put Airlines /airlines/edit/23
 ```
 
 Body
@@ -344,7 +344,7 @@ Body
 #### Edit Photo Airlines
 
 ```
-  Edit Photo Airlines https://gentle-tights-jay.cyclic.app/airlines/photo/23
+  Edit Photo Airlines /airlines/photo/23
 ```
 
 ```json
@@ -356,7 +356,7 @@ Body
 #### Delete Airlines
 
 ```
-  Delete Airlines https://gentle-tights-jay.cyclic.app/airlines/delete/27
+  Delete Airlines /airlines/delete/27
 ```
 
 Body
@@ -381,7 +381,7 @@ Body
 #### Get Stock Ticket
 
 ```
-  Get Stock Ticket https://gentle-tights-jay.cyclic.app/stock-ticket/getstockticket
+  Get Stock Ticket /stock-ticket/getstockticket
 ```
 
 Body
@@ -479,7 +479,7 @@ Body
 #### Get Stock Ticket By Id
 
 ```
-  Get Stock Ticket By Id https://gentle-tights-jay.cyclic.app/stock-ticket/getstockticket/19
+  Get Stock Ticket By Id /stock-ticket/getstockticket/19
 ```
 
 Body
@@ -513,7 +513,7 @@ Body
 #### Post Stock Ticket
 
 ```
-  Post Stock Ticket https://gentle-tights-jay.cyclic.app/stock-ticket/register
+  Post Stock Ticket /stock-ticket/register
 ```
 
 Body
@@ -537,7 +537,7 @@ Body
 #### Put By Id Stock Ticket
 
 ```
-  Put Stock By Id Ticket https://gentle-tights-jay.cyclic.app/stock-ticket/edit/5
+  Put Stock By Id Ticket /stock-ticket/edit/5
 ```
 
 Body
@@ -561,7 +561,7 @@ Body
 #### Edit Stock Ticket
 
 ```
-  Edit Stock Ticket https://gentle-tights-jay.cyclic.app/stock-ticket/edit-stock
+  Edit Stock Ticket /stock-ticket/edit-stock
 ```
 
 Body
@@ -575,7 +575,7 @@ Body
 #### Delete Stock Ticket
 
 ```
-  Delete Stock Ticket https://gentle-tights-jay.cyclic.app/stock-ticket/delete/5
+  Delete Stock Ticket /stock-ticket/delete/5
 ```
 
 Body
@@ -600,7 +600,7 @@ Body
 #### Get Ticket
 
 ```
-  Get Ticket https://gentle-tights-jay.cyclic.app/ticket/get-ticket
+  Get Ticket /ticket/get-ticket
 ```
 
 Body
@@ -903,7 +903,7 @@ Body
 #### Get All Ticket
 
 ```
-  Get All Ticket https://gentle-tights-jay.cyclic.app/ticket/get-all-ticket
+  Get All Ticket /ticket/get-all-ticket
 ```
 
 Body
@@ -1206,7 +1206,7 @@ Body
 #### Get Ticket Join
 
 ```
-  Get Ticket Join https://gentle-tights-jay.cyclic.app/ticket/get-ticket-join
+  Get Ticket Join /ticket/get-ticket-join
 ```
 
 Body
@@ -1434,7 +1434,7 @@ Body
 #### Post Ticket
 
 ```
-  Post Ticket https://gentle-tights-jay.cyclic.app/ticket/post-ticket
+  Post Ticket /ticket/post-ticket
 ```
 
 Body
@@ -1455,7 +1455,7 @@ Body
 #### Put Ticket
 
 ```
-  Put Ticket https://gentle-tights-jay.cyclic.app/ticket/put-ticket/90
+  Put Ticket /ticket/put-ticket/90
 ```
 
 Body
@@ -1469,7 +1469,7 @@ Body
 #### Delete Ticket
 
 ```
-  Delete Ticket https://gentle-tights-jay.cyclic.app/ticket/delete-ticket/90
+  Delete Ticket /ticket/delete-ticket/90
 ```
 
 Body
@@ -1494,7 +1494,7 @@ Body
 #### Get Ticket Status
 
 ```
-  Get Ticket Status https://gentle-tights-jay.cyclic.app/ticket-status/get-ticket-status
+  Get Ticket Status /ticket-status/get-ticket-status
 ```
 
 Body
@@ -1522,7 +1522,7 @@ Body
 #### Post Ticket Status
 
 ```
-  Post Ticket Status https://gentle-tights-jay.cyclic.app/ticket-status/post-ticket-status
+  Post Ticket Status /ticket-status/post-ticket-status
 ```
 
 Body
@@ -1538,7 +1538,7 @@ Body
 #### Put Ticket Status
 
 ```
-  Put Ticket Status https://gentle-tights-jay.cyclic.app/ticket-status/put-ticket-status/8
+  Put Ticket Status /ticket-status/put-ticket-status/8
 ```
 
 Body
@@ -1554,7 +1554,7 @@ Body
 #### Delete Ticket Status
 
 ```
-  Delete Ticket Status https://gentle-tights-jay.cyclic.app/ticket-status/delete-ticket-status/8
+  Delete Ticket Status /ticket-status/delete-ticket-status/8
 ```
 
 Body
@@ -1579,7 +1579,7 @@ Body
 #### Get Detail Airports
 
 ```
-  Get All airports https://gentle-tights-jay.cyclic.app/airports
+  Get All airports /airports
 ```
 
 Body
@@ -1602,7 +1602,7 @@ Body
 #### Post Airports
 
 ```
-  Post Airports https://gentle-tights-jay.cyclic.app/airports
+  Post Airports /airports
 ```
 
 Body
@@ -1618,7 +1618,7 @@ Body
 #### Put Airports
 
 ```
-  Put Airport https://gentle-tights-jay.cyclic.app/airports/1
+  Put Airport /airports/1
 ```
 
 Body
@@ -1633,7 +1633,7 @@ Body
 #### Delete Airports
 
 ```
-  Delete Airports https://gentle-tights-jay.cyclic.app/airports/1
+  Delete Airports /airports/1
 ```
 
 Body

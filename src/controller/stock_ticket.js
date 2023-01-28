@@ -44,7 +44,7 @@ const stockTicketController = {
     const limit = req.query.limit || 5;
     const page = req.query.page || 1;
     const hargaAtas = req.query.hargaAtas || 200000000000;
-    const hargaBawah = req.query.hargaBawah || 100;
+    const hargaBawah = req.query.hargaBawah || 0;
     // const arvtimeAwal = req.query.arvtimeAwal || "00:00";
     // const arvtimeAkhir = req.query.arvtimeAkhir || "23:59";
     const deptimeAwal = req.query.deptimeAwal || "00:00";
@@ -53,12 +53,17 @@ const stockTicketController = {
     // const arvtimeAkhir = req.query.arvtimeAkhir || "23:59";
     ticketModel
       .getTicketapagitu(
-        search, limit, page,hargaAtas,hargaBawah,
+        search,
+        limit,
+        page,
+        hargaAtas,
+        hargaBawah,
         // arvtimeAkhir,arvtimeAwal,
-        deptimeAwal,deptimeAkhir
-        )
+        deptimeAwal,
+        deptimeAkhir
+      )
       .then((result) => {
-        console.log(result.rows)
+        console.log(result.rows);
         response(res, 200, true, result.rows, "Success get ticket stock data");
       })
       .catch((err) => {
@@ -149,17 +154,15 @@ const stockTicketController = {
       console.log(error);
       return response(res, 400, false, error, "edit data ticket stock failed");
     }
-  },updateStockticketbooked: async (req,res,next) => {
+  },
+  updateStockticketbooked: async (req, res, next) => {
     try {
       const id = req.params.id;
       // const id_ticketstatus = req.body.id
-      const {
-        stock,
-        id_ticketstatus
-      } = req.body;
+      const { stock, id_ticketstatus } = req.body;
       const data = {
         stock,
-        id_ticketstatus
+        id_ticketstatus,
       };
       const { rows } = await ticketModel.putTicketbooked(id, data);
       return response(res, 200, true, rows, "Success update stock ticket");
@@ -167,7 +170,7 @@ const stockTicketController = {
       console.log(error);
       return response(res, 400, false, error, "update ticket stock failed");
     }
-  }
+  },
   // getTicketsearch: async (req, res, next) => {
   //   // try {
   //   //   const page = req.query.page || 1;
